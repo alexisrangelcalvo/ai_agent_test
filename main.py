@@ -13,8 +13,6 @@ from tools_etc import calculator_tool
 
 
 # TO SET THE API KEY BY TERMINAL
-#export OPENAI_API_KEY="***REMOVED***"
-
 load_dotenv()
 
 population_path = os.path.join("data", "population.csv")
