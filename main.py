@@ -6,13 +6,17 @@ from prompts import new_prompt, instruction_str, context
 from note_engine import note_engine
 from llama_index.tools import QueryEngineTool, ToolMetadata
 from llama_index.agent import ReActAgent#, Tool
+from llama_index.tools.function_tool import FunctionTool
+#from llama_index.core.tools import FunctionTool
 #from llama_index.tools import Tool
 from llama_index.llms import OpenAI
 from pdf import canada_engine
-from tools_etc import calculator_tool
+from tools_etc import create_average_metric_tool
 
 
 # TO SET THE API KEY BY TERMINAL
+#export OPENAI_API_KEY="REMOVED"
+# ESTO SE TIENE QUE ELIMINAR ANTES DE HACER UN COMMIT, DE LO CONTRARIO LO RECHAZARA GITHUB
 load_dotenv()
 
 population_path = os.path.join("data", "population.csv")
@@ -22,6 +26,11 @@ population_query_engine = PandasQueryEngine(
     df=population_df, verbose=True, instruction_str=instruction_str
 )
 population_query_engine.update_prompts({"pandas_prompt": new_prompt})
+
+
+#----- Seccion de creación de herramientas
+
+average_metric_tool = create_average_metric_tool(population_df)
 
 tools = [
     note_engine,
@@ -39,11 +48,7 @@ tools = [
             description="this gives detailed information about canada the country",
         ),
     ),
-#    Tool(
-#    fn=calculator_tool,
-#    name="calculator",
-#    description="Utiliza esta herramienta para realizar cálculos aritméticos. Ejemplo: 'average of 100 and 200'."
-#    ),
+    average_metric_tool
 ]
 
 #llm = OpenAI(model="gpt-3.5-turbo-0613")
