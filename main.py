@@ -14,9 +14,6 @@ from pdf import canada_engine
 from tools_etc import create_average_metric_tool
 
 
-# TO SET THE API KEY BY TERMINAL
-#export OPENAI_API_KEY="REMOVED"
-# ESTO SE TIENE QUE ELIMINAR ANTES DE HACER UN COMMIT, DE LO CONTRARIO LO RECHAZARA GITHUB
 load_dotenv()
 
 population_path = os.path.join("data", "population.csv")
