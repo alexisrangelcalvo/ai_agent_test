@@ -1,3 +1,12 @@
 I love Tim
 save a note of that!
 In Canada, the two main languages spoken are English and French. Approximately 98 percent of Canadians can speak either or both English and French. English is spoken by 57 percent of Canadians, while French is spoken by 21 percent. There are also Indigenous language groups in Canada, with more than 65 distinct languages and dialects. Additionally, Canada is home to various sign languages, including American Sign Language (ASL) and Quebec Sign Language (LSQ).
+I can use a translation tool to understand instructions in Spanish.
+Total population: 8043901603, Number of migrants: 3045, Median age: 31.31
+Perform exploratory data analysis (EDA) on the population dataset from population.csv
+Population statistics grouped by continents: [insert data here]
+Countries with the highest fertility rates: Niger, DR Congo, Chad, Somalia
+Unable to retrieve Fertility Rate and Median Age data for the countries
+Calculate the simple average of two ratios
+Values to calculate the average: 10, 15, 20, 25, 30
+Save notes about the last three prompts

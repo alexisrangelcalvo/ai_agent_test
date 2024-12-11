@@ -5,9 +5,15 @@ from llama_index.query_engine import PandasQueryEngine
 from prompts import new_prompt, instruction_str, context
 from note_engine import note_engine
 from llama_index.tools import QueryEngineTool, ToolMetadata
-from llama_index.agent import ReActAgent
+from llama_index.agent import ReActAgent#, Tool
+#from llama_index.tools import Tool
 from llama_index.llms import OpenAI
 from pdf import canada_engine
+from tools_etc import calculator_tool
+
+
+# TO SET THE API KEY BY TERMINAL
+#export OPENAI_API_KEY="***REMOVED***"
 
 load_dotenv()
 
@@ -35,9 +41,19 @@ tools = [
             description="this gives detailed information about canada the country",
         ),
     ),
+#    Tool(
+#    fn=calculator_tool,
+#    name="calculator",
+#    description="Utiliza esta herramienta para realizar cálculos aritméticos. Ejemplo: 'average of 100 and 200'."
+#    ),
 ]
 
-llm = OpenAI(model="gpt-3.5-turbo-0613")
+#llm = OpenAI(model="gpt-3.5-turbo-0613")
+llm = OpenAI(
+#    api_key=VAR_OPENAI_API_KEY,
+    model="gpt-3.5-turbo")
+
+
 agent = ReActAgent.from_tools(tools, llm=llm, verbose=True, context=context)
 
 while (prompt := input("Enter a prompt (q to quit): ")) != "q":
